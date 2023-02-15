@@ -21,43 +21,43 @@ ffuf -c -w "/opt/host/main.txt:FILE" -H "X-Originating-IP: 127.0.0.1, X-Forwarde
 ffuf -w wordlist.txt -u https://example.org/FUZZ -mc all -fs 42 -c -v
 ```
 
-## Fuzz Host-header, match HTTP 200 responses.
+## ffuf Fuzz Host-header, match HTTP 200 responses.
 #web/recon ##ffuf
 ```
 ffuf -w hosts.txt -u https://example.org/ -H "Host: FUZZ" -mc 200
 ```
 
-## Virtual host discovery (without DNS records)
+## ffuf Virtual host discovery (without DNS records)
 #web/recon ##ffuf
 ```
 ffuf -w /path/to/vhost/wordlist -u https://target -H "Host: FUZZ" -fs 4242
 ```
 
-## Playing with threads and wait
+## ffuf Playing with threads and wait
 #web/recon ##ffuf
 ```
 ffuf -u https://target/FUZZ -w /home/mdayber/Documents/Tools/Wordlists/WebContent_Discovery/content_discovery_4500.txt -c -p 0.1 -t 10
 ```
 
-## GET parameter fuzzing if the param is known (fuzzing values) and filtering 401
+## ffuf GET parameter fuzzing if the param is known (fuzzing values) and filtering 401
 #web/recon ##ffuf
 ```
 ffuf -w /path/to/values.txt -u https://target/script.php?valid_name=FUZZ -fc 401
 ```
 
-## POST parameter fuzzing
+## ffuf POST parameter fuzzing
 #web/recon ##ffuf
 ```
 ffuf -w /path/to/postdata.txt -X POST -d "username=admin\&password=FUZZ" -u https://target/login.php -fc 401
 ```
 
-## Fuzz POST JSON data. Match all responses not containing text "error".
+## ffuf Fuzz POST JSON data. Match all responses not containing text "error".
 #web/recon ##ffuf
 ```
 ffuf -w entries.txt -u https://example.org/ -X POST -H "Content-Type: application/json" -d '{"name": "FUZZ", "anotherkey": "anothervalue"}' -fr "error" 
 ```
 
-## specific extensions with the word-list’s entries, the -e flag can be used.
+## ffuf specific extensions with the word-list’s entries, the -e flag can be used.
 #web/recon ##ffuf
 ```
 ffuf -w wordlist.txt -u http://website.com/FUZZ -e .aspx,.html,.php,.txt
