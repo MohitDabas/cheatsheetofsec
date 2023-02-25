@@ -77,7 +77,9 @@ ffuf -w <path-wordlist> -u https://test-url/FUZZ -fr <regex-pattern>
 
 ## ffuf fuzz substring
 #web/recon ##ffuf
-```ffuf -w <path-wordlist> -u https://test-url/testFUZZ```
+```
+ffuf -w <path-wordlist> -u https://test-url/testFUZZ
+```
 
 ## ffuf fuzz with muliple files
 #web/recon ##ffuf
